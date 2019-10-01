@@ -12,12 +12,24 @@ export const search = (req, res) => {
 		query: { term: searchingBy }
 	} = req;
 
-	res.render("search", { pageTitle: "Search", searchingBy });
+	res.render("search", { pageTitle: "Search", searchingBy, videos });
 };
-export const upload = (req, res) => res.render("upload");
+export const getUpload = (req, res) =>
+	res.render("upload", { pageTitle: "Upload" });
 
-export const videoDetail = (req, res) => res.render("videoDetail");
+export const postUpload = (req, res) => {
+	const {
+		body: { file, title, description }
+	} = req;
+	// To Do:Upload and save video
+	res.redirect(routes.videoDetail(324393));
+};
 
-export const editVideo = (req, res) => res.render("editVideo");
+export const videoDetail = (req, res) =>
+	res.render("videoDetail", { pageTitle: "Delete Video" });
 
-export const deleteVideo = (req, res) => res.render("deleteVideo");
+export const editVideo = (req, res) =>
+	res.render("editVideo", { PageTitle: "Edit Video" });
+
+export const deleteVideo = (req, res) =>
+	res.render("deleteVideo", { PageTitle: "Delete Video" });
